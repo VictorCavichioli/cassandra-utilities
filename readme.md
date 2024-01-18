@@ -1,7 +1,8 @@
 # Cassandra Utilities
+
 Repository dedicated to develop utilities to test the NoSQL database Apache Cassandra
 
-### How to use a Python env
+## How to use a Python env
 
 Install python package using pip:
 
@@ -17,12 +18,14 @@ python -m venv env
 
 Active your env:
 
-  - In windows
+- In windows
+
     ```bash
     env/Scripts/activate.bat
     ```
 
-  - In macOS/Linux
+- In macOS/Linux
+
     ```bash
     source env/bin/activate
     ```
