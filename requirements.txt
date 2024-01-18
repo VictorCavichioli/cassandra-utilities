@@ -1,0 +1,9 @@
+cassandra-driver
+cassandra-driver[graph]
+python-snappy
+scales
+black
+behave
+requests
+jsonschema
+colorlog
