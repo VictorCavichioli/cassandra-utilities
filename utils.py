@@ -153,7 +153,7 @@ class CassandraMockData:
         start_time = time.time()
         threads = []
         for i in range(core):
-            thread = threading.Thread(target=self.populate_mock_data, args=(10000,))
+            thread = threading.Thread(target=self.populate_mock_data, args=(100000,))
             threads.append(thread)
             logging.info(f"Main    :creating thread {i}")
             thread.start()

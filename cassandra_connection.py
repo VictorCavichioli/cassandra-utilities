@@ -1,7 +1,9 @@
 from cassandra.cluster import Cluster
-
+from tests.conftest import get_container_ips_by_name
 DEFAULT_KEYSPACE = "shoppingcart"
 
+CCM_IP_LIST = ["127.0.0.1", "127.0.0.2", "127.0.0.4", "127.0.0.3"]
+DOCKER_SEED_NAMES = ['cassandra-image_cassandra-seed-dc3-rack1-node1_1','cassandra-image_cassandra-seed-dc1-rack1-node1_1','cassandra-image_cassandra-seed-dc2-rack1-node1_1']  # Lista de nomes dos containers
 
 class CassandraConnection:
     def __init__(
@@ -10,7 +12,8 @@ class CassandraConnection:
         file="cassandra-image/schema.cql",
         execute_file=False,
     ):
-        self.cluster = Cluster(["127.0.0.1", "127.0.0.2", "127.0.0.4", "127.0.0.3"])
+        docker_ip_list = get_container_ips_by_name(DOCKER_SEED_NAMES)
+        self.cluster = Cluster(docker_ip_list)
         if len(file) > 1 and execute_file == True:
             self.session = self.cluster.connect()
             self.execute_cql_from_file(file)

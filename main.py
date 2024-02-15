@@ -9,7 +9,7 @@ data = CassandraMockData()
 
 logging.info("Main    : Starting Application")
 
-data.speed_run_populate_data(core=10)
+data.speed_run_populate_data(core=5)
 
 # start_time = time.time()
 

@@ -1,4 +1,4 @@
-CREATE KEYSPACE IF NOT EXISTS ecchronos WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter1': 1};
+CREATE KEYSPACE IF NOT EXISTS ecchronos WITH replication = {'class': 'NetworkTopologyStrategy', 'dc1': 1, 'dc2': 2, 'dc3': 1};
 
 CREATE TABLE IF NOT EXISTS ecchronos.lock (
     resource text,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS ecchronos.repair_history(
     AND default_time_to_live = 2592000
     AND CLUSTERING ORDER BY (repair_id DESC);
 
-CREATE KEYSPACE IF NOT EXISTS shoppingcart WITH replication = {'class':'SimpleStrategy', 'replication_factor': 1};
+CREATE KEYSPACE IF NOT EXISTS shoppingcart WITH replication = {'class': 'NetworkTopologyStrategy', 'dc1': 1, 'dc2': 2, 'dc3': 1};
 
 CREATE TABLE IF NOT EXISTS shoppingcart.user_by_email (
   use_id UUID,

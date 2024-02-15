@@ -1,0 +1,34 @@
+
+cassandra:
+  image: "cassandra:4.0"
+  dockerfile:
+    environment:
+      - CASSANDRA_HOME=/usr/share/cassandra
+      - CASSANDRA_CONF=/etc/cassandra
+      - LOCAL_JMX=no
+      - JVM_EXTRA_OPTS="-Dcassandra.jmx.local.port=7199 -Dcom.sun.management.jmxremote.rmi.port=7199 -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=127.0.0.1"
+    ports:
+      - "9042:9042"
+      - "7000:7000"
+
+  # config.yaml
+  cluster:
+    name: cassandra_test_cluster
+    datacenters:
+      - name: datacenter1
+        nodes:
+          - name: node1
+            racks:
+              - rack1
+          - name: node2
+            racks:
+              - rack1
+      - name: datacenter2
+        nodes:
+          - name: node3
+            racks:
+              - rack1
+          - name: node4
+            racks:
+              - rack1
+
